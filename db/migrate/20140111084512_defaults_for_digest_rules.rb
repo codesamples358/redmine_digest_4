@@ -1,4 +1,4 @@
-class DefaultsForDigestRules < ActiveRecord::Migration
+class DefaultsForDigestRules < PLUGIN_MIGRATION_CLASS
   def change
     # description was extracted from "other changes"
     DigestRule.find_each do |rule|

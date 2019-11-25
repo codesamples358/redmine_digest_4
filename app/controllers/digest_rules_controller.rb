@@ -2,7 +2,7 @@ class DigestRulesController < ApplicationController
 
   PREVIEW_ISSUE_LIMIT = 20
 
-  before_filter :set_user
+  before_action :set_user
 
   def new
     @digest_rule = @user.digest_rules.build

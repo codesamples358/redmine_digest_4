@@ -26,8 +26,8 @@ class DigestRule < ActiveRecord::Base
   serialize :project_ids, Array
   serialize :event_ids
 
-  attr_accessible :active, :name, :raw_project_ids, :project_selector,
-                  :notify, :recurrent, :event_ids, :move_to, :template
+  # attr_accessible :active, :name, :raw_project_ids, :project_selector,
+                  # :notify, :recurrent, :event_ids, :move_to, :template
 
   validates :name, presence: true
   validates :project_selector, inclusion: { in: PROJECT_SELECTOR_VALUES }

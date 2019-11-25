@@ -9,7 +9,14 @@ require_dependency 'redmine_digest/patches/my_controller_patch'
 require_dependency 'redmine_digest/patches/issue_patch'
 require_dependency 'redmine_digest/patches/journal_patch'
 
-ActionDispatch::Callbacks.to_prepare do
+class Module
+  def alias_method_chain(method, what)
+    alias_method "#{method}_without_#{what}", method
+    alias_method method, "#{method}_with_#{what}"
+  end
+end
+
+ActiveSupport::Reloader.to_prepare do
 
   unless Project.included_modules.include? RedmineDigest::Patches::ProjectPatch
     Project.send :include, RedmineDigest::Patches::ProjectPatch
