@@ -1,0 +1,53 @@
+<%= error_messages_for 'digest_rule' %>
+
+<div class="box tabular digest-rule">
+  <h3><%= l(:label_digest_rule) %></h3>
+
+  <p>
+    <%= f.check_box :active %>
+  </p>
+
+  <p>
+    <%= f.text_field :name %>
+  </p>
+
+  <p>
+    <%= f.select :notify, notify_options_for_select %>
+  </p>
+  <p>
+    <%= l(:text_notify) %>
+  </p>
+
+  <p class="select2-field">
+    <%= f.select :recurrent, recurrent_options_for_select %>
+  </p>
+
+  <p class="select2-field">
+    <%= f.select :project_selector, project_selector_options_for_select %>
+  </p>
+
+  <p id="digest-rule-projects" class="select2-field">
+    <%= f.hidden_field :raw_project_ids,
+                       data: { options: project_ids_options_for_select } %>
+  </p>
+
+  <p>
+    <%= f.select :template, templates_for_select %>
+  </p>
+
+  <fieldset>
+    <legend><%= l(:text_event_types) %></legend>
+    <%= hidden_field_tag 'event_ids[]', [] %>
+
+    <% DigestEvent::TYPES.each do |event_type| %>
+        <p>
+          <%= label_tag event_type_id(event_type), l(event_type, scope: 'event_types') %>
+          <%= check_box_tag 'digest_rule[event_ids][]',
+                            event_type,
+                            f.object.event_type_enabled?(event_type),
+                            id: event_type_id(event_type) %>
+          <br/>
+        </p>
+    <% end %>
+  </fieldset>
+</div>

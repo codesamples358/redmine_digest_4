@@ -1,0 +1,13 @@
+<html>
+<head></head>
+<body style="font-family: Verdana, sans-serif; font-size: 0.8em;">
+  <span style="font-size: 0.8em; font-style: italic;">
+    <%= Redmine::WikiFormatting.to_html(Setting.text_formatting, Setting.emails_header).html_safe %>
+  </span>
+  <%= yield %>
+  <hr style="width: 100%; height: 1px; background: #ccc; border: 0;"/>
+  <span style="font-size: 0.8em; font-style: italic;">
+    <%= Redmine::WikiFormatting.to_html(Setting.text_formatting, Setting.emails_footer).html_safe %>
+  </span>
+</body>
+</html>

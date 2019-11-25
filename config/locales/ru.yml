@@ -1,0 +1,66 @@
+ru:
+  label_digest_rule: "Правила отбора задач для дайджеста"
+  label_digest_rules_plural: "Правила для дайджеста"
+  label_digest_rule_new: "Новое правило"
+  label_digest_rule_edit: "Изменить правило"
+
+  new_digest_rule: "Новое правило"
+
+  field_project_selector: "Проекты"
+  field_notify: "Уведомления"
+  field_recurrent: "Периодичность"
+  field_template: "Шаблон дайджеста"
+
+  text_event_types: "Выберите события для включения в дайджест"
+  text_digest: "%{recurrent} дайджест с изменениями от %{time_from} до %{time_to}"
+  text_digest_subject: "[%{recurrent} дайджест] %{name}"
+  text_digest_comments: "Задачи сгруппированы по итоговому статусу"
+  text_notify: "Важное замечание: Не изменяются стандартные уведомления о задачах в которые Вы создали или на которые Вы назначены или в которых Вы наблюдатель."
+  text_new_issues: "Новые задачи"
+  text_changed_issues: "Измененные задачи"
+
+  button_digest_preview: "Предпросмотр"
+
+  title_digest_preview: "Предварительный просмотр дайджеста"
+
+  project_selector:
+    all: "Изменения задач в любых проектах"
+    selected: "Изменения задач в выбранных проектах"
+    not_selected: "Изменения задач во всех пректах кроме выбранных"
+    member: "Изменения задач во всех пректах где я участник"
+    member_not_selected: "Изменения задач во всех пректах где я участник, кроме выбранных"
+
+  project_selector_short:
+    all: "Все проекты"
+    selected: "Только выбранные проекты"
+    not_selected: "Кроме выбранных проектов"
+    member: "Проекты где я участник"
+    member_not_selected: "Проекты где я участник, кроме выбранных"
+
+  notify_options:
+    all: "Присылать уведомления о событии (если есть) и включить его в дайджест"
+    notify: "Не включать событие в дайджест, если уведомление было отправлено"
+    digest: "Не отправлять уведомления о событии, если оно будет включено в дайджест"
+
+  recurrent_types:
+    daily: "Ежедневный"
+    weekly: "Еженедельный"
+    monthly: "Ежемесячный"
+
+  event_types:
+    issue_created: "Добавлена новая задача"
+    comment_added: "Добавлен комментарий"
+    attachment_added: "Добавлено вложение"
+    status_changed: "Изменился статус"
+    percent_changed: "Изменился процент выполнения"
+    assignee_changed: "Изменилось назначение"
+    version_changed: "Изменилась версия"
+    project_changed: "Изменился проект"
+    subject_changed: "Изменилась тема"
+    other_attr_changed: "Другие изменения"
+    description_changed: "Изменилось описание"
+
+  digest_template:
+    short: "Краткий"
+    detail: "Детальный (события сгруппированы по типам)"
+    timeline: "Детальный (события сгруппированы по времени)"
