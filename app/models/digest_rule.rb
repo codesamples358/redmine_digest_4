@@ -69,7 +69,7 @@ class DigestRule < ActiveRecord::Base
     Project.
       joins(:memberships).
       where(get_projects_scope).
-      uniq.pluck('projects.id')
+      uniq.pluck('id')
   end
 
   def calculate_time_from(time_to)

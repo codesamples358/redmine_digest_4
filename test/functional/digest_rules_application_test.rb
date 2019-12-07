@@ -5,9 +5,10 @@ class DigestRulesControllerTest < ActionController::TestCase
            :issues, :issue_statuses, :trackers, :journals, :journal_details
 
   def setup
-    @controller                = DigestRulesController.new
-    @request                   = ActionController::TestRequest.new
-    @response                  = ActionController::TestResponse.new
+    # @controller                = DigestRulesController.new
+    # binding.pry
+    # @request                   = ActionController::TestRequest.new({}, nil, DigestRulesController)
+    # @response                  = ActionController::TestResponse.new
     @user                      = User.find(1) # admin
     User.current               = @user
     @request.session[:user_id] = @user.id
@@ -26,25 +27,26 @@ class DigestRulesControllerTest < ActionController::TestCase
 
   def test_post_create
     assert_difference 'DigestRule.count', 1 do
-      post :create, digest_rule: {
+      post :create, params: { digest_rule: {
         name:             'test',
         active:           true,
         project_selector: DigestRule::ALL,
         recurrent:        DigestRule::DAILY }
+      }
     end
 
     assert_redirected_to '/my/account'
   end
 
   def test_get_edit
-    get :edit, id: @digest_rule.id
+    get :edit, params: { id: @digest_rule.id }
     assert_response :success
   end
 
   def test_put_update
     attrs = { project_selector: DigestRule::MEMBER,
               recurrent:        DigestRule::MONTHLY }
-    put :update, id: @digest_rule.id, digest_rule: attrs
+    put :update, params: { id: @digest_rule.id, digest_rule: attrs }
 
     assert_redirected_to '/my/account'
     @digest_rule.reload
@@ -53,7 +55,7 @@ class DigestRulesControllerTest < ActionController::TestCase
   end
 
   def test_post_destroy
-    post :destroy, id: @digest_rule.id
+    post :destroy, params: { id: @digest_rule.id }
 
     assert_redirected_to '/my/account'
     digest_rule = DigestRule.find_by_id(@digest_rule.id)
@@ -75,7 +77,7 @@ class DigestRulesControllerTest < ActionController::TestCase
   def preview_template(template)
     @digest_rule.template = template
     @digest_rule.save!
-    get :show, id: @digest_rule.id
+    get :show, params: { id: @digest_rule.id }
     assert_response :success, "Template #{template} should open successfully"
   end
 

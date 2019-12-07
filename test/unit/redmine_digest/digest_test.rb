@@ -129,7 +129,7 @@ class RedmineDigest::DigestTest < ActiveSupport::TestCase
   def test_time_zone
     Time.use_zone('UTC') do
       # leave only ane issue at midnight UTC
-      Issue.delete_all('id <> 1')
+      Issue.where('id <> 1').delete_all
       Issue.find(1).update_attribute :created_on, Date.current.midnight
     end
 
@@ -141,7 +141,7 @@ class RedmineDigest::DigestTest < ActiveSupport::TestCase
   def test_time_zone2
     Time.use_zone('UTC') do
       # leave only ane issue at midnight UTC
-      Issue.delete_all('id <> 1')
+      Issue.where('id <> 1').delete_all
       Issue.find(1).update_attribute :created_on, Date.current.midnight
     end
 

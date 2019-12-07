@@ -184,9 +184,15 @@ module RedmineDigest
     end
 
     def get_issues_scope(issue_ids)
-      Issue.joins(:project).includes(:author, :project, journals: [:user, :details]).
+      scope = Issue.joins(:project).includes(:author, :project, journals: [:user, :details]).
         where('issues.id in (?)', issue_ids).
         where(Issue.visible_condition(user))
+
+      if Issue.respond_to?(:join_prohibited_issues)
+        scope = Issue.join_prohibited_issues(scope)
+      end
+
+      scope
     end
 
     def project_ids
